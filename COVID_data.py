@@ -33,30 +33,31 @@ def get_country_data(api_key, country):
         country_data = response.json()
         return country_data
     else:
-        print("Error:", response.status_code, response.text)
+        return None
         
 def get_regions(country_list):
     regions = []
     for x in country_list:
         country = get_country_data(API_KEY_2, x)
-        regions.append(country[0]['region'])
+        #print(country)
+        if len(country) != 0:
+            regions.append(country[0]['region'])
+    print(regions)
     return regions
+
 
 
 # Main Function __________________________________________
 
 def main():
     c19_data_before = get_covid_data(API_KEY, '2021-12-19')
-    print(c19_data_before)
     c19_data_after = get_covid_data(API_KEY, '2021-12-31')
     before_after_dict = create_country_before_after_data_dict(c19_data_before, c19_data_after)
     country_list = list(before_after_dict.keys())
-    print(country_list)
-    for x in country_list:
-        get_country_data(API_KEY_2, x)
-    get_regions(country_list)
+    #print(country_list)
+    get_regions(country_list)   
 
-main() 
+main()  
 
 
     
