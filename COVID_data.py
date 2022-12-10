@@ -31,6 +31,34 @@ before_after_dict = create_country_before_after_data_dict(c19_data_before, c19_d
 country_list = list(before_after_dict.keys())
 print(country_list)
 
+API_KEY_2 = 'zCA4zeQDtprhKig1OKirLw==dFYnM8mjk65UenZ6'
+
+def get_country_data(api_key, country):
+    api_url = 'https://api.api-ninjas.com/v1/country?name={}'.format(country)
+    response = requests.get(api_url, headers={'X-Api-Key': api_key})
+    if response.status_code == requests.codes.ok:
+        country_data = response.text
+        return country_data
+    else:
+        print("Error:", response.status_code, response.text)
+        
+def get_regions(country_list):
+    regions = []
+    for x in country_list:
+        country = get_country_data(API_KEY_2, x)
+        regions.append(country[0]['region'])
+    return regions
+
+def main():
+    before_after_dict = create_country_before_after_data_dict(c19_data_before, c19_data_after)
+    country_list = list(before_after_dict.keys())
+    print(country_list)
+    for x in country_list:
+        get_country_data(API_KEY_2, x)
+    get_regions(country_list)
+
+main() 
+
 
 # def get_covid_increase_for_date(covid_data, input_date):
 #     """Takes in covid data and date returns number of new cases for the date entered"""
