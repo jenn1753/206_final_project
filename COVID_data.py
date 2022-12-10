@@ -53,31 +53,31 @@ print(country_list)
 
 
 # Holidays data API __________________________________________
-API_KEY_2 = 'zCA4zeQDtprhKig1OKirLw==dFYnM8mjk65UenZ6'
+# API_KEY_2 = 'zCA4zeQDtprhKig1OKirLw==dFYnM8mjk65UenZ6'
 
-def get_holiday_data(api_key, country, year):
-    api_url = 'https://api.api-ninjas.com/v1/holidays?country={}&year={}'.format(country, year)
-    response = requests.get(api_url, headers={'X-Api-Key': api_key})
-    if response.status_code == requests.codes.ok:
-        holiday_data = response.text
-        return holiday_data
-    else:
-        print("Error:", response.status_code, response.text) 
+# def get_holiday_data(api_key, country, year):
+#     api_url = 'https://api.api-ninjas.com/v1/holidays?country={}&year={}'.format(country, year)
+#     response = requests.get(api_url, headers={'X-Api-Key': api_key})
+#     if response.status_code == requests.codes.ok:
+#         holiday_data = response.text
+#         return holiday_data
+#     else:
+#         print("Error:", response.status_code, response.text) 
 
-# print(get_holiday_data(API_KEY_2, 'US', '2021'))   
+# # print(get_holiday_data(API_KEY_2, 'US', '2021'))   
 
 
 
-def main():
-    c19_data = get_covid_data(API_KEY, 'US')
-    print(c19_data)
-    month_covid_data = get_covid_increase_for_date(c19_data, '2021', '05')
-    covid_month_increase = get_month_covid_increase(month_covid_data)
-    # print(covid_month_increase)
-    holidays = get_holiday_data(API_KEY_2, 'US', '2021')
-    print(holidays)
+# def main():
+#     c19_data = get_covid_data(API_KEY, 'US')
+#     print(c19_data)
+#     month_covid_data = get_covid_increase_for_date(c19_data, '2021', '05')
+#     covid_month_increase = get_month_covid_increase(month_covid_data)
+#     # print(covid_month_increase)
+#     holidays = get_holiday_data(API_KEY_2, 'US', '2021')
+#     print(holidays)
 
-main()
+# main()
 
 
 
