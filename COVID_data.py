@@ -14,22 +14,12 @@ def get_covid_data(api_k, date):
         return covid_data
     else:
         print("Error:", response.status_code, response.text)
-    
-# c19_data = get_covid_data(API_KEY, '2021-12-25')
-# print(c19_data)
-
-c19_data_before = get_covid_data(API_KEY, '2021-12-19')
-c19_data_after = get_covid_data(API_KEY, '2021-12-31')
 
 def create_country_before_after_data_dict(before_data, after_data):
     new_dict = {}
     for index in range(len(before_data)):
         new_dict[before_data[index]['country']] = {'before': before_data[index]['cases']['new'], 'after': after_data[index]['cases']['new']}
     return new_dict
-
-before_after_dict = create_country_before_after_data_dict(c19_data_before, c19_data_after)
-country_list = list(before_after_dict.keys())
-print(country_list)
 
 API_KEY_2 = 'zCA4zeQDtprhKig1OKirLw==dFYnM8mjk65UenZ6'
 
@@ -50,6 +40,8 @@ def get_regions(country_list):
     return regions
 
 def main():
+    c19_data_before = get_covid_data(API_KEY, '2021-12-19')
+    c19_data_after = get_covid_data(API_KEY, '2021-12-31')
     before_after_dict = create_country_before_after_data_dict(c19_data_before, c19_data_after)
     country_list = list(before_after_dict.keys())
     print(country_list)
