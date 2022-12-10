@@ -27,7 +27,7 @@ def get_country_data(api_key, country):
     api_url = 'https://api.api-ninjas.com/v1/country?name={}'.format(country)
     response = requests.get(api_url, headers={'X-Api-Key': api_key})
     if response.status_code == requests.codes.ok:
-        country_data = response.text
+        country_data = response.json()
         return country_data
     else:
         print("Error:", response.status_code, response.text)
