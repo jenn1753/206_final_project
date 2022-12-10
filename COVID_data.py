@@ -36,12 +36,12 @@ def get_country_data(api_key, country):
         return None
         
 def get_regions(country_list):
-    regions = []
+    regions = {}
     for x in country_list:
         country = get_country_data(API_KEY_2, x)
         #print(country)
         if len(country) != 0:
-            regions.append(country[0]['region'])
+            regions[x] = country[0]['region']
     print(regions)
     return regions
 
