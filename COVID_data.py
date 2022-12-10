@@ -28,6 +28,8 @@ def create_country_before_after_data_dict(before_data, after_data):
     return new_dict
 
 before_after_dict = create_country_before_after_data_dict(c19_data_before, c19_data_after)
+country_list = list(before_after_dict.keys())
+print(country_list)
 
 
 # def get_covid_increase_for_date(covid_data, input_date):
